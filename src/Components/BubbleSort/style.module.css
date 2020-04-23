@@ -1,0 +1,76 @@
+.main {
+  width: 60%;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  margin-top: 20%;
+  align-items: flex-end;
+  justify-content: space-around;
+  position: relative;
+  border-bottom: 1px solid white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 3px 15px black;
+}
+
+.bar {
+  width: 50px;
+  position: absolute;
+  border-top-right-radius: 20px;
+  padding-top: 10px;
+  border-top-left-radius: 20px;
+  border: black solid 0.55px;
+  left: 20px;
+  min-height: 20px;
+  background-color: rgb(120, 194, 223);
+  text-align: center;
+  transition: 0.4s ease-in;
+}
+
+.active {
+  background-color: rgb(66, 202, 100) !important;
+}
+
+.active::after {
+  content: url("../Assests/arrowdown.svg");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.func {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.func span {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.func button {
+  min-width: 60px;
+  background-color: rgb(19, 159, 51);
+  padding: 10px;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 2px 1px 4px gray;
+}
+
+@media (max-width: 600px) {
+  .bar {
+    width: 25px;
+  }
+
+  .main {
+    width: 80%;
+  }
+}

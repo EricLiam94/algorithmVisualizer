@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import style from "./sudoku.module.css";
 import Cell from "./Cell";
+import delay from "./../Utility/delay.js";
+import Goback from "../Utility/Goback";
+
 const Board = () => {
   const url = "https://sugoku.herokuapp.com/board?difficulty=easy";
   const [board, setboard] = useState([]);
@@ -70,7 +73,6 @@ const Board = () => {
     cache.map((i) => i.classList.remove(style.mystyle));
     return options;
   };
-  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   const getChild = (x, y) => {
     let node = boardRef.current.childNodes[x].childNodes[y];
@@ -92,6 +94,7 @@ const Board = () => {
 
   return (
     <div>
+      <Goback />
       {!loading && (
         <div>
           {" "}
@@ -100,7 +103,7 @@ const Board = () => {
             {board.length > 0 && (
               <button
                 onClick={() => setchangeBoard(!changeBoard)}
-                className={isSolving ? style.disabled : ""}
+                className={isSolving ? "disabled" : ""}
               >
                 generate board
               </button>

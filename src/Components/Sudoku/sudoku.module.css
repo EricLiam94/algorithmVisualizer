@@ -4,10 +4,7 @@
   --bordersize: 1px;
 }
 
-.disabled {
-  background-color: rgb(75, 96, 165) !important;
-  pointer-events: none;
-}
+
 
 .mystyle {
   background-color: rgb(70, 117, 0) !important;
@@ -25,13 +22,14 @@ color: red;
 }
 
 .header button {
+  width: fit-content;
   background-color: #35aa53;
   color: white;
   font-size: 11px;
   border: none;
   padding: 7px;
   text-transform: uppercase;
-  border-radius: 10px;
+  border-radius: 50px;
   transition: 0.3s ease-in;
   box-shadow: 2px 1px 3px rgb(26, 25, 25)85, 0, 0);
 }
