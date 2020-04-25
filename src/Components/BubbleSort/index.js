@@ -1,21 +1,23 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 import Goback from "./../Utility/Goback.jsx";
 import Bar from "./Bar";
 import style from "./style.module.css";
 import swapNode from "./../Utility/utility";
 import delay from "./../Utility/delay";
+import Loader from "../Utility/Loader.jsx";
 
 const BubbleSort = () => {
   const containerRef = useRef(null);
   const [list, setlist] = useState(null);
-  const [change, setchange] = useState(false);
+  const [isChange, setisChange] = useState(false);
   const [isSorting, setisSorting] = useState(false);
+  const [isComplete, setisComplete] = useState(false);
   useEffect(() => {
+    setisComplete(false);
     setisSorting(false);
     setlist(randomArray(10, 120));
-  }, [change]);
+  }, [isChange]);
 
   function randomArray(length, max) {
     return Array.apply(null, Array(length)).map(function () {
@@ -26,12 +28,12 @@ const BubbleSort = () => {
   const sort = async () => {
     setisSorting(true);
     let cur = [...containerRef.current.childNodes];
+    cur.sort((item) => item.style.left);
     let len = list.length;
     let swapped;
     do {
       swapped = false;
       for (let i = 0; i < len - 1; i++) {
-        console.log("check");
         let a = cur[i].dataset.value;
         let b = cur[i + 1].dataset.value;
         cur[i].classList.toggle(style.active);
@@ -51,6 +53,7 @@ const BubbleSort = () => {
       }
     } while (swapped);
     setisSorting(false);
+    setisComplete(true);
   };
 
   return (
@@ -63,13 +66,16 @@ const BubbleSort = () => {
         <span>Bubble Sort</span>
         <button
           className={isSorting ? "disabled" : ""}
-          onClick={() => setchange(!change)}
+          onClick={() => window.location.reload()}
         >
           {" "}
           New Array{" "}
         </button>
-        <button className={isSorting ? "disabled" : ""} onClick={() => sort()}>
-          {isSorting ? "Sorting..." : "Sort"}
+        <button
+          className={isSorting ? "disabled" : isComplete ? "disabled" : " "}
+          onClick={() => sort()}
+        >
+          {isSorting ? <Loader /> : isComplete ? "Complete" : "Sort"}
         </button>
       </div>
       <Goback />

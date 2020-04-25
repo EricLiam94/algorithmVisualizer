@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import Toast from "../Utility/Toast";
 import style from "./sudoku.module.css";
 import Cell from "./Cell";
 import delay from "./../Utility/delay.js";
 import Goback from "../Utility/Goback";
-
+import Loader from "../Utility/Loader";
 const Board = () => {
   const url = "https://sugoku.herokuapp.com/board?difficulty=easy";
+  const [count, setcount] = useState(0);
   const [board, setboard] = useState([]);
   const [loading, setloading] = useState(false);
   const [changeBoard, setchangeBoard] = useState(false);
@@ -14,6 +16,7 @@ const Board = () => {
   const [speed, setspeed] = useState(5);
   const boardRef = useRef(null);
   useEffect(() => {
+    setcount(0);
     setcomplete(false);
     setboard([]);
     setloading(true);
@@ -30,20 +33,26 @@ const Board = () => {
       for (let j = 0; j < 9; j++) {
         if (curboard[i][j] !== 0) continue;
         let options = await validOption(curboard, i, j);
+        setcount((c) => c + 1);
         if (options.size === 0) return false;
         options = Array.from(options);
         for (const value of options) {
-          let copy = [...curboard];
-          copy[i][j] = value;
-          setboard(copy);
-          let res = await solveBoard(curboard);
-          if (res) return true;
-          copy[i][j] = 0;
-          setboard(copy);
+          try {
+            let copy = [...curboard];
+            copy[i][j] = value;
+            setboard(copy);
+            let res = await solveBoard(curboard);
+            if (res) return true;
+            copy[i][j] = 0;
+            setboard(copy);
+          } catch (error) {
+            console.log(error);
+          }
         }
 
         return false;
       }
+
     return curboard;
   };
   const validOption = async (curBoard, row, col) => {
@@ -110,7 +119,7 @@ const Board = () => {
             )}
             <button
               onClick={clickSolving}
-              className={complete ? style.disabled : ""}
+              className={complete ? "disabled" : ""}
             >
               {complete ? "Complete" : isSolving ? "solving" : "solve"}
             </button>
@@ -131,6 +140,7 @@ const Board = () => {
       <div className={style.board} ref={boardRef}>
         {board && board.map((row, idx) => <Row rowValue={row} key={idx} />)}
       </div>
+      <Toast show={complete} title="Total attemps" content={count} />
     </div>
   );
 };
@@ -144,13 +154,5 @@ const Row = ({ rowValue }) => {
     </div>
   );
 };
-
-const Loader = () => (
-  <div className={style.loader}>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-);
 
 export default Board;
