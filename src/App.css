@@ -108,4 +108,9 @@
   .card_container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .videobg {
+    width: auto;
+    height: 100vh;
+  }
 }
