@@ -66,7 +66,7 @@ const BubbleSort = () => {
         <span>Bubble Sort</span>
         <button
           className={isSorting ? "disabled" : ""}
-          onClick={() => window.location.reload()}
+          onClick={() => window.location.reload(false)}
         >
           {" "}
           New Array{" "}
