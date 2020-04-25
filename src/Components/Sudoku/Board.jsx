@@ -119,7 +119,7 @@ const Board = () => {
             )}
             <button
               onClick={clickSolving}
-              className={complete ? "disabled" : ""}
+              className={complete ? "disabled" : isSolving ? "disabled" : " "}
             >
               {complete ? "Complete" : isSolving ? "solving" : "solve"}
             </button>

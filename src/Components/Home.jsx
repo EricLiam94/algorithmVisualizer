@@ -22,6 +22,15 @@ const Home = () => {
           <div className="card">
             <Link to="/bubble">Bubble Sort</Link>
           </div>
+          <div className="card">
+            <Link to="/selection">Selection Sort</Link>
+          </div>
+          <div className="card">
+            <Link to="/quick">Quick Sort</Link>
+          </div>
+          <div className="card">
+            <Link to="/insertion">Insertion Sort</Link>
+          </div>
         </div>
       </div>
     </div>

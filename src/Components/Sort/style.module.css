@@ -30,20 +30,6 @@
   transition: 0.4s ease-in;
 }
 
-.active {
-  background-color: rgb(66, 202, 100) !important;
-}
-
-.active::after {
-  content: url("../Assests/arrowdown.svg");
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .func {
   display: flex;
   align-items: center;

@@ -4,4 +4,8 @@ const swapNode = (a, b) => {
   b.style.left = temp;
 };
 
+export const getValue = (node) => {
+  return parseInt(node.dataset.value);
+};
+
 export default swapNode;
