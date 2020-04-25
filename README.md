@@ -1,3 +1,5 @@
+# This is a static website to visualize some basic algorithm
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
