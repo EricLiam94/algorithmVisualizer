@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import Toast from "../Utility/Toast";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import style from "./sudoku.module.css";
 import Cell from "./Cell";
 import delay from "./../Utility/delay.js";
@@ -28,6 +31,12 @@ const Board = () => {
       });
   }, [changeBoard]);
 
+  useEffect(() => {
+    if (complete === true) {
+      toast.configure();
+      toast("😀 Total Attemps:" + count);
+    }
+  }, [complete, count]);
   const solveBoard = async (curboard) => {
     for (let i = 0; i < 9; i++)
       for (let j = 0; j < 9; j++) {
@@ -140,7 +149,6 @@ const Board = () => {
       <div className={style.board} ref={boardRef}>
         {board && board.map((row, idx) => <Row rowValue={row} key={idx} />)}
       </div>
-      <Toast show={complete} title="Total attemps" content={count} />
     </div>
   );
 };
