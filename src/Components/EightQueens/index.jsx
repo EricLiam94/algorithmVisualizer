@@ -74,7 +74,7 @@ const Queens = () => {
   return (
     <div>
       <div className={style.header}>
-        <h2> Eight Queens Problem</h2>
+        <h2> 8 Queens</h2>
         <Button
           onClick={clickHandler}
           className={isComplete ? "disabled" : " "}
