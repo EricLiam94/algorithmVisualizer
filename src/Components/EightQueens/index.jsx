@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 
 import { toast } from "react-toastify";
 import Goback from "../Utility/Goback";
 import delay from "../Utility/delay.js";
 import style from "./style.module.css";
+import Loader from "../Utility/Loader";
 
 let queenpic = require("../Assests/queen.png");
 
@@ -74,13 +74,20 @@ const Queens = () => {
   return (
     <div>
       <div className={style.header}>
-        <h2> 8 Queens</h2>
-        <Button
-          onClick={clickHandler}
-          className={isComplete ? "disabled" : " "}
-        >
-          {isComplete ? "Complete" : isSolving ? "Solving" : "Solve"}
-        </Button>
+        <h2 style={{ textAlign: "center" }}> 8 Queens</h2>
+
+        {isSolving ? (
+          <Loader />
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <button
+              onClick={clickHandler}
+              className={isComplete ? "disabled" : ""}
+            >
+              {isComplete ? "Complete" : "Solve"}
+            </button>
+          </div>
+        )}
       </div>
       <div>
         {data &&

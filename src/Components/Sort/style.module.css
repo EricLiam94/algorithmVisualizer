@@ -44,12 +44,18 @@
 .func button {
   min-width: 80px;
   background-color: rgb(19, 159, 51);
-  padding: 10px 20px;
+  padding: 5px 20px;
   color: white;
   border-radius: 20px;
   cursor: pointer;
   border: none;
   box-shadow: 2px 1px 4px gray;
+  transition: 0.3s linear;
+}
+
+.func button:hover {
+  opacity: 0.8;
+  border: rgb(51, 51, 51) 1px solid;
 }
 
 .func div {
