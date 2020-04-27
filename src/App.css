@@ -8,13 +8,14 @@
 }
 
 .disabled {
-  background-color: rgb(92, 92, 92) !important;
+  background-color: rgb(107, 115, 194) !important;
   pointer-events: none;
 }
 
 .home {
   width: 100vw;
   overflow: hidden;
+  background: image("/img/staticpic.png");
   height: 100vh;
   position: relative;
 }
@@ -69,6 +70,12 @@
   left: 50px;
   width: 50px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.goback:hover {
+  opacity: 0.8s;
+  transform: scale(1.1);
 }
 
 .loader {
@@ -105,9 +112,13 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 680px) {
   .card_container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category {
+    padding-left: 8%;
   }
 
   .videobg {

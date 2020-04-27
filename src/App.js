@@ -5,7 +5,7 @@ import "./App.css";
 import Board from "./Components/Sudoku/Board.jsx";
 import Sort from "./Components/Sort";
 import Home from "./Components/Home.jsx";
-
+import Queens from "./Components/EightQueens";
 import bubble from "./Components/SortModels/bubble";
 import selection from "./Components/SortModels/selection";
 import quick from "./Components/SortModels/quick";
@@ -30,6 +30,9 @@ function App() {
           </Route>
           <Route path="/insertion">
             <Sort title="Insertion Sort" sort={insertion} />
+          </Route>
+          <Route path="/8queens">
+            <Queens />
           </Route>
           <Route path="*">
             <Home />

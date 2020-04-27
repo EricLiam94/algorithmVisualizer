@@ -1,0 +1,61 @@
+.container {
+  --bordercolor: rgb(80, 214, 255);
+  --bordersize: 1px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s linear;
+  width: fit-content;
+  border-left: var(--bordersize) var(--bordercolor) solid;
+  border-right: var(--bordersize) var(--bordercolor) solid;
+}
+
+.cell {
+  border: 0.2px solid rgb(160, 160, 160);
+  width: 4vw;
+  height: 4vw;
+  background-color: rgb(141, 141, 141);
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s ease-in;
+}
+
+.cell_even {
+  background-color: rgb(221, 221, 221);
+}
+
+.queen {
+  width: 95%;
+  animation: fadein 0.4s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.2;
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .cell {
+    width: 9vw;
+    height: 9vw;
+    padding: 2px;
+  }
+}

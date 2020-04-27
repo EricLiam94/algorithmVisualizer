@@ -64,8 +64,8 @@
 
 @media (max-width: 600px) {
   .cell {
-    width: 7vw;
-    height: 7vw;
+    width: 9vw;
+    height: 9vw;
     padding: 2px;
   }
 }

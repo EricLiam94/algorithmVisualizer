@@ -1,7 +1,6 @@
 import React from "react";
-import style from "./sudoku.module.css";
 
-const Cell = ({ value }) => {
+const Cell = ({ value, style }) => {
   return (
     <div className={style.cell}>
       <p className={style.cell_value}> {value || ""}</p>

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const video = require("./Assests/galaxy.mp4");
-
+const staticpic = require("./Assests/staticpic.png");
 const Home = () => {
   return (
-    <div className="home">
+    <div className="home" style={{ backgroundImage: `url(${staticpic})` }}>
       <div>
         <video className="videobg" autoPlay={true} loop={true} muted={true}>
           <source src={video} type="video/mp4" />
@@ -31,10 +31,13 @@ const Home = () => {
           <div className="card">
             <Link to="/insertion">Insertion Sort</Link>
           </div>
+          <div className="card">
+            <Link to="/8queens">8 Queens</Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default React.memo(Home);

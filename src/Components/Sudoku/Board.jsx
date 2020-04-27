@@ -50,7 +50,7 @@ const Board = () => {
             let copy = [...curboard];
             copy[i][j] = value;
             setboard(copy);
-            let res = await solveBoard(curboard);
+            let res = await solveBoard(copy);
             if (res) return true;
             copy[i][j] = 0;
             setboard(copy);
@@ -147,17 +147,20 @@ const Board = () => {
       )}
       {loading && <Loader />}
       <div className={style.board} ref={boardRef}>
-        {board && board.map((row, idx) => <Row rowValue={row} key={idx} />)}
+        {board &&
+          board.map((row, idx) => (
+            <Row rowValue={row} key={idx} style={style} />
+          ))}
       </div>
     </div>
   );
 };
 
-const Row = ({ rowValue }) => {
+const Row = ({ rowValue, style }) => {
   return (
     <div className={style.row}>
       {rowValue.map((value, idx) => (
-        <Cell value={value} key={idx} />
+        <Cell value={value} key={idx} style={style} />
       ))}
     </div>
   );
