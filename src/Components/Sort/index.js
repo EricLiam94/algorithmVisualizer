@@ -8,13 +8,14 @@ import Loader from "../Utility/Loader.jsx";
 const BubbleSort = ({ title, sort }) => {
   const containerRef = useRef(null);
   const [list, setlist] = useState(null);
+  const [isChange, setisChange] = useState(false);
   const [isSorting, setisSorting] = useState(false);
   const [isComplete, setisComplete] = useState(false);
   useEffect(() => {
     setisComplete(false);
     setisSorting(false);
     setlist(randomArray(10, 100));
-  }, []);
+  }, [isChange]);
 
   function randomArray(length, max) {
     return Array.apply(null, Array(length)).map(function () {
@@ -22,7 +23,9 @@ const BubbleSort = ({ title, sort }) => {
     });
   }
   const onClick = () => {
-    sort(containerRef.current.childNodes, setisComplete, setisSorting);
+    let temp = [...containerRef.current.childNodes];
+    temp = temp.sort((a, b) => parseInt(a.style.left) - parseInt(b.style.left));
+    sort(temp, setisComplete, setisSorting);
   };
 
   return (
@@ -33,19 +36,27 @@ const BubbleSort = ({ title, sort }) => {
       </div>
       <div className={style.func}>
         <span>{title}</span>
-        <button
-          className={isSorting ? "disabled" : ""}
-          onClick={() => window.location.reload(false)}
-        >
-          {" "}
-          New Array{" "}
-        </button>
-        <button
-          className={isSorting ? "disabled" : isComplete ? "disabled" : " "}
-          onClick={onClick}
-        >
-          {isSorting ? <Loader /> : isComplete ? "Complete" : "Sort"}
-        </button>
+        <div>
+          <button
+            className={isSorting ? "disabled" : ""}
+            onClick={() => setisChange(!isChange)}
+          >
+            {" "}
+            New Array{" "}
+          </button>
+        </div>
+        {isSorting ? (
+          <Loader />
+        ) : (
+          <div>
+            <button
+              className={isSorting ? "disabled" : isComplete ? "disabled" : " "}
+              onClick={onClick}
+            >
+              {isComplete ? "Complete" : "Sort"}
+            </button>
+          </div>
+        )}
       </div>
       <Goback />
     </div>

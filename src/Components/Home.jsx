@@ -2,12 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const video = require("./Assests/galaxy.mp4");
-const staticpic = require("./Assests/staticpic.png");
+const pic = require("./Assests/staticpic.png");
 const Home = () => {
   return (
-    <div className="home" style={{ backgroundImage: `url(${staticpic})` }}>
+    <div className="home">
       <div>
-        <video className="videobg" autoPlay={true} loop={true} muted={true}>
+        <video
+          className="videobg"
+          autoPlay={true}
+          poster={pic}
+          loop={true}
+          muted={true}
+        >
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>

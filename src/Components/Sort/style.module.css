@@ -31,9 +31,8 @@
 }
 
 .func {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 20px;
 }
 
@@ -43,14 +42,20 @@
 }
 
 .func button {
-  min-width: 60px;
+  min-width: 80px;
   background-color: rgb(19, 159, 51);
-  padding: 10px;
+  padding: 10px 20px;
   color: white;
   border-radius: 20px;
   cursor: pointer;
   border: none;
   box-shadow: 2px 1px 4px gray;
+}
+
+.func div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
